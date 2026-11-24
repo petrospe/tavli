@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#152522">
-    <meta name="description" content="Παίξε Πόρτες, Πλακωτό και Φεύγα με δύο παίκτες στην ίδια συσκευή.">
+    <meta name="description" content="Παίξε Πόρτες, Πλακωτό και Φεύγα με αντίπαλο τον υπολογιστή ή έναν δεύτερο παίκτη.">
     <title>Τάβλι</title>
   </head>
   <body>
@@ -12,6 +12,13 @@
       <header>
         <h1>Τάβλι</h1>
         <form id="settings" aria-label="Νέα παρτίδα">
+          <label>Παίκτες
+            <select id="players">
+              <option value="two">2 παίκτες</option>
+              <option value="one">1 παίκτης</option>
+              <option value="online">Online</option>
+            </select>
+          </label>
           <label>Παιχνίδι
             <select id="mode">
               <option value="portes">Πόρτες</option>
@@ -23,14 +30,28 @@
           <label id="target-label" hidden>Πόντοι
             <select id="target"><option>3</option><option selected>5</option><option>7</option></select>
           </label>
-          <button class="secondary" type="submit">Νέο παιχνίδι</button>
+          <button id="start-game" class="secondary" type="submit">Νέο παιχνίδι</button>
         </form>
       </header>
+      <section id="online" class="online" aria-label="Online δωμάτιο" hidden>
+        <form id="join-room">
+          <label for="room-code">Κωδικός δωματίου</label>
+          <input id="room-code" type="text" maxlength="6" size="8" autocapitalize="characters" autocomplete="off" spellcheck="false" required>
+          <button class="secondary" type="submit">Σύνδεση</button>
+        </form>
+        <div id="room-info" class="room-info" hidden>
+          <p>Δωμάτιο <strong id="room-id"></strong> · <span id="room-seat"></span></p>
+          <button id="invite" class="secondary" type="button">Αντιγραφή πρόσκλησης</button>
+          <input id="invite-url" type="text" readonly aria-label="Σύνδεσμος πρόσκλησης" hidden>
+          <button id="leave-room" class="secondary" type="button">Έξοδος</button>
+        </div>
+        <p id="room-status" role="status"></p>
+      </section>
       <section class="table" aria-label="Τραπέζι παιχνιδιού">
         <div class="score">
           <span><i class="token ivory"></i> Λευκά <strong id="ivory-score">0</strong></span>
           <h2 id="variant">Πόρτες</h2>
-          <span><strong id="red-score">0</strong> Κόκκινα <i class="token red"></i></span>
+          <span><strong id="red-score">0</strong> <span id="red-name">Κόκκινα</span> <i class="token red"></i></span>
         </div>
         <div id="board" class="board" role="group" aria-label="Ταμπλό με 24 θέσεις"></div>
         <div class="turn">

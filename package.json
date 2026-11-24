@@ -5,10 +5,17 @@
   "scripts": {
     "dev": "vite",
     "check": "tsc --noEmit",
-    "build": "npm run check && vite build"
+    "build": "npm run check && vite build",
+    "build:rooms": "tsc --noEmit && vite build --ssr server/index.ts --outDir server-dist",
+    "start:rooms": "node server-dist/index.js"
   },
   "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/ws": "^8.18.2",
     "typescript": "5.9.3",
-    "vite": "7.3.2"
+    "vite": "7.3.8"
+  },
+  "dependencies": {
+    "ws": "^8.23.0"
   }
 }

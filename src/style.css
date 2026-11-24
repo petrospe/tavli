@@ -104,3 +104,19 @@ label { font-size: .875rem; }
   form { gap: .4rem; }
   .board { aspect-ratio: 1.46; }
 }
+
+.online { margin-bottom: 1rem; padding: .75rem; border: 1px solid #47665a; border-radius: .65rem; }
+.room-info { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
+.room-info[hidden] { display: none; }
+.online input {
+  background: #233b35;
+  color: inherit;
+  border: 1px solid #668278;
+  border-radius: .45rem;
+  font: inherit;
+  padding: .45rem .7rem;
+}
+#room-code { text-transform: uppercase; }
+#invite-url { width: min(100%, 30rem); }
+#room-status:not(:empty) { margin-top: .5rem; color: var(--muted); }
+.online form[hidden] { display: none; }
